@@ -1,13 +1,13 @@
-package com.example.frt_th;
+package com.registro.usuarios;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FrtThApplication {
+public class RegistroUsuariosSpringSecurityApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FrtThApplication.class, args);
+		SpringApplication.run(RegistroUsuariosSpringSecurityApplication.class, args);
 	}
 
 }
