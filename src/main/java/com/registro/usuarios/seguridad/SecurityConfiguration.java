@@ -3,6 +3,7 @@ package com.registro.usuarios.seguridad;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -19,6 +20,7 @@ import com.registro.usuarios.service.UsuarioService;
 public class SecurityConfiguration {
 
     @Autowired
+    @Lazy
     private UsuarioService usuarioService;
 
     @Bean
@@ -42,23 +44,20 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .authorizeHttpRequests(authorizeRequests ->
-                authorizeRequests
-                    .requestMatchers("/registro**", "/js/**", "/css/**", "/img/**").permitAll()
-                    .anyRequest().authenticated()
+            .authorizeHttpRequests(authorizeRequests -> authorizeRequests
+                .requestMatchers("/registro**", "/js/**", "/css/**", "/img/**").permitAll()
+                .anyRequest().authenticated()
             )
-            .formLogin(formLogin ->
-                formLogin
-                    .loginPage("/login")
-                    .permitAll()
+            .formLogin(formLogin -> formLogin
+                .loginPage("/login")
+                .permitAll()
             )
-            .logout(logout ->
-                logout
-                    .invalidateHttpSession(true)
-                    .clearAuthentication(true)
-                    .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                    .logoutSuccessUrl("/login?logout")
-                    .permitAll()
+            .logout(logout -> logout
+                .invalidateHttpSession(true)
+                .clearAuthentication(true)
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/login?logout")
+                .permitAll()
             );
 
         return http.build();
