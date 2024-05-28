@@ -13,7 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import com.registro.usuarios.service.UsuarioService;
+import com.registro.usuarios.service.EmpleadosService;
 
 @Configuration
 @EnableWebSecurity
@@ -21,7 +21,7 @@ public class SecurityConfiguration {
 
     @Autowired
     @Lazy
-    private UsuarioService usuarioService;
+    private EmpleadosService usuarioService;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {

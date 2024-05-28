@@ -6,23 +6,23 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.registro.usuarios.dto.UsuarioRegistroDTO;
-import com.registro.usuarios.service.UsuarioService;
+import com.registro.usuarios.dto.Empleado;
+import com.registro.usuarios.service.EmpleadosService;
 
 @Controller
 @RequestMapping("/registro")
 public class RegistroUsuarioControlador {
 	
-	private UsuarioService usuarioService;
+	private EmpleadosService usuarioService;
 
-	public RegistroUsuarioControlador(UsuarioService usuarioService) {
+	public RegistroUsuarioControlador(EmpleadosService usuarioService) {
 		super();
 		this.usuarioService = usuarioService;
 	}
 	
 	@ModelAttribute("usuario")
-	public UsuarioRegistroDTO retornaNuevoUsarioRegistroDTO() {
-		return new UsuarioRegistroDTO();
+	public Empleado retornaNuevoUsarioRegistroDTO() {
+		return new Empleado();
 		
 	}
 
@@ -32,7 +32,7 @@ public class RegistroUsuarioControlador {
 	}
 	
 	@PostMapping
-	public String registrarCuentaDeUsuario( @ModelAttribute("usuario") UsuarioRegistroDTO registroDTO) {
+	public String registrarCuentaDeUsuario( @ModelAttribute("usuario") Empleado registroDTO) {
 		usuarioService.guardar(registroDTO);
 		return "redirect:/registro?exito";
 		
