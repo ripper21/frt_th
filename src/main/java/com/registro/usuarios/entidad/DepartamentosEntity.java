@@ -15,12 +15,12 @@ import lombok.Data;
 @Entity
 @Table(name = "empleados")
 @Data
-public class EmpleadosEntity {
+public class DepartamentosEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_empleado")
-	private Integer id_empleado;
+	@Column(name = "id_departamento")
+	private Integer id_departamento;
 
 	@Column(name = "nombre")
 	private String nombre;
@@ -28,31 +28,11 @@ public class EmpleadosEntity {
 	@Column(name = "apellidos")
 	private String apellidos;
 
-	@Column(name = "numero_telefonico")
-	private String numero_telefonico;
+	@Column(name = "id_gerente")
+	private Integer id_gerente;
 
 	@Column(name = "fecha_nacimiento")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fecha_nacimiento;
-
-	@Column(name = "email")
-	private String email;
-	
-	@Column(name = "clave")
-	private String clave;
-
-	@Column(name = "nif")
-	private String nif;
-
-	@Column(name = "ss_num")
-	private String ss_num;
-
-	@Column(name = "id_departamento")
-	private Integer id_departamento;
-
-	@Column(name = "id_cargo")
-	private Integer id_cargo;
-
-	
 
 }
